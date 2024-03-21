@@ -13,8 +13,13 @@ public class SavingsAccount extends Account {
         if (activeAccount) {
             super.deposit(depositAmount);
         } else {
-            System.out.println("La cuenta no esta activa, el saldo debe ser mayor a $10.000");
-            System.out.println("Saldo actual: $" + balance);
+            if (depositAmount + balance >= 10000) {
+                super.deposit(depositAmount);
+                activeAccount = true;
+            } else {
+                System.out.println("La cuenta no esta activa, el saldo debe ser mayor a $10000");
+                System.out.println("Saldo actual: $" + balance);
+            }
         }
     }
 
@@ -23,7 +28,8 @@ public class SavingsAccount extends Account {
         if (activeAccount) {
             super.withdraw(withdrawal);
         } else {
-            System.out.println("La cuenta no esta activa, el saldo debe ser mayor a $10.000");
+            System.out.println("\n= RETIRO =");
+            System.out.println("La cuenta no esta activa, el saldo debe ser mayor a $10000");
             System.out.println("Saldo actual: $" + balance);
         }
     }
@@ -42,8 +48,7 @@ public class SavingsAccount extends Account {
 
     @Override
     public void printAttributes() {
-        System.out.println("Saldo de la cuenta: " + balance);
-        System.out.println("Comision mensual: " + monthlyCommission);
-        System.out.println("Transacciones realizadas: " + (withdrawalsNumber + consignmentsNumber));
+        super.printAttributes();
+        System.out.println("Cuenta activa: " + activeAccount);
     }
 }

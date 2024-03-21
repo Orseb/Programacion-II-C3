@@ -12,6 +12,9 @@ public class CheckingAccount extends Account{
     @Override
     public void withdraw(float withdrawal) {
         if (withdrawal > balance) {
+            System.out.println("\n= RETIRO =");
+            System.out.println("El sueldo de tu cuenta pasa de $" + balance + " a $0");
+            System.out.println("El sobregiro de tu cuenta pasa de $" + overdraft + " a $ " + (overdraft + (withdrawal-balance)));
             overdraft += withdrawal - balance;
             balance = 0;
             withdrawalsNumber ++;
@@ -43,9 +46,7 @@ public class CheckingAccount extends Account{
 
     @Override
     public void printAttributes() {
-        System.out.println("Saldo de la cuenta: " + balance);
+        super.printAttributes();
         System.out.println("Sobregiro de la cuenta: " + overdraft);
-        System.out.println("Comision mensual: " + monthlyCommission);
-        System.out.println("Transacciones realizadas: " + (withdrawalsNumber + consignmentsNumber));
     }
 }

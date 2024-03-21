@@ -17,12 +17,14 @@ public class Account {
     }
 
     public void deposit(float depositAmount) {
+        System.out.println("\n= DEPOSITO =");
         System.out.println("El sueldo de tu cuenta pasa de $" + balance + " a $" + (balance+ depositAmount));
         balance += depositAmount;
         consignmentsNumber ++;
     }
 
     public void withdraw(float withdrawal) {
+        System.out.println("\n= RETIRO =");
         if (withdrawal > balance) {
             System.out.println("No puedes retirar mas saldo del que tienes disponible.");
         } else {
@@ -43,10 +45,10 @@ public class Account {
     }
 
     public void printAttributes() {
-        System.out.println("Saldo de la cuenta: " + balance);
-        System.out.println("Numero de consignaciones: " + consignmentsNumber);
-        System.out.println("Numero de retiros: " + withdrawalsNumber);
-        System.out.println("Tasa anual (%): " + annualRate);
-        System.out.println("Comision mensual: " + monthlyCommission);
+        System.out.println("\n= INFORMACION DE LA CUENTA =");
+        System.out.println("Saldo de la cuenta: $" + balance);
+        System.out.println("Comision mensual: $" + monthlyCommission);
+        System.out.println("Transacciones realizadas: " + (withdrawalsNumber + consignmentsNumber));
+        System.out.println("Tasa anual: %" + annualRate);
     }
 }
